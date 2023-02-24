@@ -1,7 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
-driver = webdriver.Chrome(executable_path= "/Users/laurautarbayeva/Desktop/Careerist_New/python-selenium-automation")
+driver = webdriver.Chrome(executable_path="/")
 
 # Amazon logo
 driver.find_element(By.XPATH, '//i[@class="a-icon a-icon-logo"]')
@@ -25,6 +25,7 @@ driver.find_element(By.ID, 'ap-other-signin-issues-link')
 driver.find_element(By.ID, 'createAccountSubmit')
 
 # *Conditions of use link
-
+driver.find_element(By.XPATH, "//a[contains(@href, 'ap_signin_notification_condition_of_use?')]")
 
 # *Privacy Notice link
+driver.find_element(By.XPATH, "//a[contains(@href, 'ap_signin_notification_privacy_notice?')]")
