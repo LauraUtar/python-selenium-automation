@@ -1,0 +1,50 @@
+body {
+    margin: 0px;
+    background-image: url("images.jpeg");
+}
+title {
+    text-transform: capitalize;
+}
+
+h2.h2header.hey {
+    color: red;
+    text-transform: uppercase;
+div#h4header h4{
+    text-transform: lowercase;
+}
+
+div p.disclaimer {
+    background-color: black;
+}
+}
+div {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 15px;
+    margin-bottom: 200px;
+    background-color: white;
+}
+h4 {
+    color: darkblue;
+}
+div.ingredients {
+    background-image: url("wall.jpg");
+}
+div#header {
+    color: darkblue;
+    font-size: 20px;
+    text-align: center;
+}
+
+a:link {
+    color: black
+}
+
+a:visited {
+    color: red;
+}
+
+a:active {
+    color: orange;
+}
