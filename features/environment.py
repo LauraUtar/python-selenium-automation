@@ -5,9 +5,9 @@ def browser_init(context):
     """
     :param context: Behave context
     """
-    context.driver = webdriver.Chrome(executable_path="/chromedriver")
-    # context.browser = webdriver.Safari()
-    # context.browser = webdriver.Firefox()
+    # context.driver = webdriver.Chrome(executable_path="/chromedriver")
+    # context.driver = webdriver.Safari()
+    context.driver = webdriver.Firefox(executable_path="/geckodriver")
 
     context.driver.maximize_window()
     context.driver.implicitly_wait(4)
