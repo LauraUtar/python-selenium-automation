@@ -5,13 +5,13 @@ def browser_init(context):
     """
     :param context: Behave context
     """
-    # context.driver = webdriver.Chrome(executable_path="/chromedriver")
+    context.driver = webdriver.Chrome(executable_path="/chromedriver")
     # context.driver = webdriver.Safari()
-    context.driver = webdriver.Firefox(executable_path="/geckodriver")
+    # context.driver = webdriver.Firefox(executable_path="/geckodriver")
 
     context.driver.maximize_window()
     context.driver.implicitly_wait(4)
-
+    # behave -f allure_behave.formatter:AllureFormatter -o test_results/ features/tests/product_search.feature
 
 def before_scenario(context, scenario):
     print('\nStarted scenario: ', scenario.name)

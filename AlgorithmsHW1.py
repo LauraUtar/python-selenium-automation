@@ -4,7 +4,7 @@
 
 def compute_sum(n):
     result = 0
-    for i in range(n + 1): # 0, 1, 2,3,4,5, 6, 7
+    for i in range(n + 1): # 0, 1, 2,3,4,5
         result = result + i
     return result
 
@@ -37,13 +37,27 @@ print(max_number(4,7,9))
 def odd_and_even_numbers(n):
     odd_number = 0
     even_number = 0
+
+    even_list = []
+    odd_list = []
     for i in str(n):
         if int(i) % 2 == 0:
-            even_number += 1
+            even_number += 1 # you're adding 1 to the result
+            even_list.append(i)
         else:
             odd_number += 1
+            odd_list.append(i)
+
     print("Even numbers:", even_number)
+    print("LIst of even numbers: ", even_list)
     print("Odd numbers:", odd_number)
+    print("LIst of odd numbers: ", odd_list)
 
 
+
+
+
+# digit: 0
+# even_number value: 3
+# odd_number value: 2
 odd_and_even_numbers(34560)
