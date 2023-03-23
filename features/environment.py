@@ -1,4 +1,5 @@
 from selenium import webdriver
+from app.application import Application
 
 
 def browser_init(context):
@@ -11,6 +12,8 @@ def browser_init(context):
 
     context.driver.maximize_window()
     context.driver.implicitly_wait(4)
+    context.app = Application(driver=context.driver)
+
     # behave -f allure_behave.formatter:AllureFormatter -o test_results/ features/tests/product_search.feature
 
 def before_scenario(context, scenario):

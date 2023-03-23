@@ -3,8 +3,6 @@ from behave import given, when, then
 from time import sleep
 
 
-RETURN_AND_ORDERS = (By.ID, 'nav-orders')
-SIGN_IN = (By.XPATH, "//h1")
 CART_ICON = (By.ID, "nav-cart-count")
 EMPTY_CART = (By.XPATH, '//div[@class="a-row sc-your-amazon-cart-is-empty"]')
 SEARCH_INPUT = (By.ID, "twotabsearchtextbox")
@@ -18,30 +16,30 @@ CART_QUANTITY = (By.XPATH, "//li[@class='sw-product-variation']/span/span[2]")
 
 @given('Open Amazon page')
 def open_amazon(context):
-    context.driver.get('https://www.amazon.com/')
-
+    context.app.main_page.open_main_url()
 
 @when('click Returns and Orders')
 def click_returns_and_orders(context):
-    context.driver.find_element(*RETURN_AND_ORDERS).click()
+    context.app.header.click_return_and_orders()
 
 @then('Sign in page opened')
 def sign_in_page_opened(context):
-    actual_result = context.driver.find_element(*SIGN_IN).text
-    expected_result = 'Sign in'
-    assert expected_result == actual_result, f'Expected {expected_result} does not match {actual_result}'
-    print('Test case passed')
+    context.app.signin_page.sign_in_page_opened()
+    # actual_result = context.driver.find_element(*SIGN_IN).text
+    # expected_result = 'Sign in'
+    # assert expected_result == actual_result, f'Expected {expected_result} does not match {actual_result}'
+    # print('Test case passed')
 
 @when('Click on the cart icon')
 def click_on_the_cart_icon(context):
-    context.driver.find_element(*CART_ICON).click()
+    context.app.header.click_on_cart_icon()
+
 
 @then('Cart is empty')
 def cart_is_empty(context):
-    actual_result = context.driver.find_element(*EMPTY_CART).text
-    expected_result = 'Your Amazon Cart is empty'
-    assert expected_result == actual_result, f'Expected {expected_result} does not match {actual_result}'
-    print('Test case passed')
+    context.app.amazon_cart_page.verify_cart_is_empty()
+
+    # print('Test case passed')
 
 @then('Add the first item from the list to cart')
 def add_the_first_item_from_the_list_to_cart(context):
@@ -57,7 +55,7 @@ def input_search(context, search_word):
     sleep(1)
 
 
-@step("Click on the first product")
+@when("Click on the first product")
 def click_on_the_first_product(context):
     all_products = context.driver.find_elements(*ALL_PRODUCTS)
     all_products[0].click()
@@ -68,14 +66,14 @@ def click_on_the_first_product(context):
 
 
 
-@step("Click on Add to cart button")
+@when("Click on Add to cart button")
 def click_on_add_to_cart_button(context):
     sleep(3)
     context.driver.find_element(*ADD_TO_CART).click()
 
 
-@step("Open cart page")
-def step_impl(context):
+@when("Open cart page")
+def open_cart_page(context):
     context.driver.find_element(*CART).click()
 
 
@@ -88,14 +86,3 @@ def step_impl(context, quantity):
     actual_quantity = quantity.replace(" ", "")
     assert quantity ==actual_quantity, f"Expected {quantity} quantity but found {actual_quantity} quantity"
 
-
-
-
-
-
-@step("Verify cart has correct product")
-def step_impl(context):
-    """
-    :type context: behave.runner.Context
-    """
-    raise NotImplementedError(u'STEP: And Verify cart has correct product')
