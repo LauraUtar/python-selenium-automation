@@ -34,12 +34,12 @@ def verify_found_results_text(context, search_word):
     assert search_word.lower() in context.driver.current_url.lower(), f"Expected query not in {context.driver.current_url.lower()}"
 
 
-@given ('Open Amazon page product {product_id} page')
+@given('Open Amazon page product {product_id} page')
 def Open_Amazon_page_product_page(context, product_id):
     context.driver.get(f'https://www.amazon.com/gp/product/{product_id}/')
 
 
-@then ('Verify that user can click through colors')
+@then('Verify that user can click through colors')
 def Verify_that_user_can_click_through_colors(context):
     context.driver.find_element(*COLOR_OPTIONS).click() # click on 1
 

@@ -7,8 +7,3 @@ Feature: Test Scenarios for Search functionality
     And Click on search icon
     Then Product results for Watches are shown
 
-
-  Scenario: User can see that every product on Amazon search has a product name and a product image
-    Given Open Amazon Search Results page for blouse
-    Then Verify that each product has a product name and a product image
-

@@ -85,4 +85,3 @@ def step_impl(context, quantity):
     actual_quantity = context.driver.find_elements(*CART_QUANTITY)[0].text
     actual_quantity = quantity.replace(" ", "")
     assert quantity ==actual_quantity, f"Expected {quantity} quantity but found {actual_quantity} quantity"
-
