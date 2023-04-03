@@ -15,6 +15,7 @@ class Header(Page):
     DEPARTMENT_SELECT = (By.ID, 'searchDropdownBox')
     DEPARTMENT_SUB_NAV = (By.CSS_SELECTOR, "[data-category='{SUBSTRING}']")
 
+
     def get_dept_sub_nav_locator(self, department):
         return [self.DEPARTMENT_SUB_NAV[0], self.DEPARTMENT_SUB_NAV[1].replace('{SUBSTRING}', department)]
 
@@ -40,8 +41,7 @@ class Header(Page):
 
 
     # def search_query(self, search_query):
-    #     time.sleep(3)
-    #     search_query = self.find_element(*self.)
+    #     self.input_text(search_query, *SE)
 
 
     def verify_spanish_lang(self):

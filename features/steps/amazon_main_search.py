@@ -70,3 +70,8 @@ def verify_spanish_lang(context):
 @then('Verify {selected_dept} department is selected')
 def verify_department(context, selected_dept):
     context.app.header.verify_department(selected_dept)
+
+
+@when('Search for {search_query} in amazon page')
+def search_on_amazon(context, search_query):
+    context.app.header.search_amazon(search_query)

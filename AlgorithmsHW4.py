@@ -9,7 +9,7 @@
 # array in given way.
 def rearrangeEvenAndOdd(arr, n):
     # variables
-    j = -1
+    j = -1 #for the position before the first one
 
     # quick sort method
     for i in range(0, n):
@@ -21,13 +21,14 @@ def rearrangeEvenAndOdd(arr, n):
             j = j + 1
 
             # swap the element
+            # arr[i], arr[j] = arr[j], arr[i]
             temp = arr[i]
             arr[i] = arr[j]
             arr[j] = temp
 
 
 # Driver code
-arr =  [7, 3, 5, 6, 4, 10, 3, 2]
+arr = [7, 3, 5, 6, 4, 10, 3, 2]
 n = len(arr)
 
 rearrangeEvenAndOdd(arr, n)

@@ -23,7 +23,7 @@ Feature: Tests for Amazon search
   Scenario Outline: User can select and search in a department
       Given Open Amazon
       When Select department by <dept_alias>
-      And Search for <search_query>
+      And Search for <search_query> in amazon page
       Then Verify <selected_dept> department is selected
       Examples:
       |dept_alias           |search_query      |selected_dept        |
