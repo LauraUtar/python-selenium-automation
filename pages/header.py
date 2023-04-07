@@ -14,7 +14,9 @@ class Header(Page):
     SPANISH_LANG = (By.CSS_SELECTOR, "[href='#switch-lang=es_US']")
     DEPARTMENT_SELECT = (By.ID, 'searchDropdownBox')
     DEPARTMENT_SUB_NAV = (By.CSS_SELECTOR, "[data-category='{SUBSTRING}']")
-
+    NEW_ARRIVALS = (By.CSS_SELECTOR, 'a[href*="/New-Arrivals/b/?"] span.nav-a-content')
+    DEALS = (By.XPATH, "//*[contains(@id, 'nav-flyout-aj:')]/div[2]/div/div[1]")
+    SEARCH_RESULT_TEXT = (By.XPATH, "//span[@class='a-color-state a-text-bold']")
 
     def get_dept_sub_nav_locator(self, department):
         return [self.DEPARTMENT_SUB_NAV[0], self.DEPARTMENT_SUB_NAV[1].replace('{SUBSTRING}', department)]
@@ -40,11 +42,27 @@ class Header(Page):
         select.select_by_value(f'search-alias={alias}')
 
 
-    # def search_query(self, search_query):
-    #     self.input_text(search_query, *SE)
-
 
     def verify_spanish_lang(self):
         self.wait_for_element_appear(*self.SPANISH_LANG)
+
+    # @given('Opens https://www.amazon.com/gp/product/B074TBCSC8 (or any other product from the closing category)')
+    # def open_amazon_product(context):
+    #     context.driver.get('https://www.amazon.com/gp/product/B074TBCSC8')
+
+
+    def hovers_over_new_arrivals(self):
+        actions = ActionChains(self.driver)
+        flag = self.find_element(*self.NEW_ARRIVALS)
+        actions.move_to_element(flag)
+        actions.perform()
+
+
+    def user_sees_deals(self):
+        return self.wait_for_element_appear(*self.DEALS)
+
+    def verify_search_results(self, expected_result):
+        self.verify_text(expected_result, *self.SEARCH_RESULT_TEXT)
+
 
 

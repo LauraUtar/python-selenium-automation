@@ -46,13 +46,13 @@ def add_the_first_item_from_the_list_to_cart(context):
     # context.driver.find_element(*GLASS_VASE)
     pass
 
-@when('Search for {search_word} product')
-def input_search(context, search_word):
-    search = context.driver.find_element(*SEARCH_INPUT)
-    search.clear()
-    search.send_keys(search_word)
-    context.driver.find_element(*SEARCH_BTN).click()
-    sleep(1)
+# @when('Search for {search_word} product')
+# def input_search(context, search_word):
+#     search = context.driver.find_element(*SEARCH_INPUT)
+#     search.clear()
+#     search.send_keys(search_word)
+#     context.driver.find_element(*SEARCH_BTN).click()
+#     sleep(1)
 
 
 @when("Click on the first product")

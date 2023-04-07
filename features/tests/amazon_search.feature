@@ -1,15 +1,15 @@
 # Created by laurautarbayeva at 4/2/23
 Feature: Tests for Amazon search
 
-#  Scenario Outline: User can search for a product
-#    Given Open Amazon
-#    When Search for <search_word>
-#    Then Verify search results are shown for <expected_result>
-#    Examples:
-#    |search_word    |expected_result    |
-#    |coffee         |"coffee"           |
-#    |table          |"table"            |
-#    |dress          |"dress"            |
+  Scenario Outline: User can search for a product
+    Given Open Amazon
+    When Search for <search_word>
+    Then Verify search results are shown for <expected_result>
+    Examples:
+    |search_word    |expected_result    |
+    |coffee         |"coffee"           |
+    |table          |"table"            |
+    |dress          |"dress"            |
 
 
 
@@ -40,3 +40,9 @@ Feature: Tests for Amazon search
     Given Open Amazon Search Results page for blouse
     Then Verify that each product has a product name and a product image
 
+
+
+  Scenario: User hovers over New Arrivals, then verifies that the user sees the deals.
+    Given Opens https://www.amazon.com/gp/product/B074TBCSC8 (or any other product from the closing category)
+    Then User hovers over New Arrivals
+    Then Verify User sees the deals

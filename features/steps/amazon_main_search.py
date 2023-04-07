@@ -15,11 +15,11 @@ def open_amazon(context):
     context.driver.get('https://www.amazon.com/')
 
 
-# @when('Search for {keyword}')
-# def search_amazon(context, keyword):
-#     # context.driver.find_element(*SEARCH_INPUT).send_keys(keyword)
-#     # context.driver.find_element(*SEARCH_BTN).click()
-#     context.app.header.search_amazon(keyword)
+@when('Search for {keyword} in amazon page')
+def search_amazon(context, keyword):
+    # context.driver.find_element(*SEARCH_INPUT).send_keys(keyword)
+    # context.driver.find_element(*SEARCH_BTN).click()
+    context.app.header.search_amazon(keyword)
 
 
 @when('Hover over language options')
@@ -72,6 +72,26 @@ def verify_department(context, selected_dept):
     context.app.header.verify_department(selected_dept)
 
 
-@when('Search for {search_query} in amazon page')
-def search_on_amazon(context, search_query):
-    context.app.header.search_amazon(search_query)
+# @when('Search for {search_query} in amazon page')
+# def search_on_amazon(context, search_query):
+#     context.app.header.search_amazon(search_query)
+
+
+@given('Opens https://www.amazon.com/gp/product/B074TBCSC8 (or any other product from the closing category)')
+def open_amazon_product(context):
+    context.driver.get('https://www.amazon.com/gp/product/B074TBCSC8')
+
+
+@then('User hovers over New Arrivals')
+def hovers_over_new_arrivals(context):
+    context.app.header.hovers_over_new_arrivals()
+
+
+@then('Verify User sees the deals')
+def user_sees_deals(context):
+    context.app.header.user_sees_deals()
+
+
+@then("Verify search results are shown for {expected_result}")
+def verify_search_results(context, expected_result):
+    context.app.header.verify_search_results(expected_result)
