@@ -1,5 +1,6 @@
 # Even First
-# Your input is a list of integers, and you have to reorder its entries so that the even entries appear first. You are required to solve it without allocating additional storage (operate with the input list).
+# Your input is a list of integers, and you have to reorder its entries so that the even entries appear first.
+# You are required to solve it without allocating additional storage (operate with the input list).
 # Example: [7, 3, 5, 6, 4, 10, 3, 2] Return [6, 4, 10, 2, 7, 3, 5, 3]
 
 # A Lomuto partition based scheme to
@@ -38,7 +39,8 @@ for i in range(0, n):
 
 
 # Increment a Number
-# Write a program that takes as input a list of digits encoding a nonnegative decimal integer D and updates the list to represent the integer D + 1.
+# Write a program that takes as input a list of digits encoding a nonnegative decimal
+# integer D and updates the list to represent the integer D + 1.
 # For example, if the input is [1, 2, 9] then you should update the array to [1, 3, 0].
 
 
@@ -69,3 +71,51 @@ AddOne(digits)
 
 for digit in digits:
     print(digit, end=' ')
+
+#Solution 2:
+def solution_2(digits):
+    # convert the array of int into an array of str
+    str_arr = [str(i) for i in digits]
+
+    # convert the array of str into a str. For example ['1', '2', '3'] -> '123'
+    str_digits = ''.join(str_arr)
+
+    # Increase the value of the number inside the string
+    str_digits =  str(int(str_digits) + 1)
+
+    # convert and return the str into an array of numbers. For example ['1', '2', '3'] -> [1, 2, 3]
+    return [int(i) for i in str_digits]
+
+print("\nresult with solution 2:", solution_2([1, 2, 9]))
+
+
+
+
+# Even First
+# Your input is a list of integers, and you have to reorder its entries so that the even entries appear first.
+# You are required to solve it without allocating additional storage (operate with the input list).
+# Example: [7, 3, 5, 6, 4, 10, 3, 2] Return [6, 4, 10, 2, 7, 3, 5, 3]
+def even_odd_sort(arr):
+    # start two index, one at the beginning of the list and another one in the final position
+    left = 0
+    right = len(arr) - 1
+
+    while left < right:
+        # We are going to repeat this process until the left index is lesser than the right index
+
+        # We will move the left index until it reaches an even number
+        while arr[left] % 2 == 0 and left < right:
+            left += 1
+
+        # We will move the right index until it reaches an odd number
+        while arr[right] % 2 != 0 and left < right:
+            right -= 1
+
+        # Swap the numbers at the left and right index
+        arr[left], arr[right] = arr[right], arr[left]
+
+    return arr
+
+
+arr = [1, 2, 3, 5, 4, 9]
+print(even_odd_sort(arr))  # Output: [4, 2, 3, 5, 1, 9]
